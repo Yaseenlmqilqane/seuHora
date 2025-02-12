@@ -1,0 +1,271 @@
+.checkout-header {
+    background-color: white;
+    color: #131313;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.158);
+
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    z-index: 1000;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+body {
+    margin: 130px 0;
+}
+
+.seuhora-logo {
+    max-width: 100px;
+    margin-top: 5px;
+}
+.seuhora-mobile-logo {
+    display: none;
+}
+
+.checkout-header-middle-section {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+
+}
+
+
+.checkout-item-quantity {
+    font-size: 18px;
+    font-weight: 500;
+}
+.quantity {
+    color: rgb(60, 164, 248);
+}
+
+.checkout-header-right-section {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-shrink: 0;
+}
+
+
+.main {
+    max-width: 1100px;
+    padding: 0 30px 0 30px;
+    margin: 140px auto 100px auto;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    column-gap: 12px;
+    align-items: start;
+}
+
+.items {
+    grid-template-columns: 1fr;
+}
+
+.cart-item-container {
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    padding: 18px;
+    margin-top: 20px;
+}
+.delivery-date {
+    margin-bottom: 16px;
+    font-size: calc(0.5rem, 1vw, 1rem);
+    font-weight: 600;
+    color: green;
+}
+
+.cart-details-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr;
+    column-gap: 25px;
+}
+
+.item-img {
+    max-width: 100%;
+    max-height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-name {
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.item-price,
+.item-name {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.item-price {
+    color: rgb(197, 24, 24);
+}
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.Update-quntity,
+.delete-item {
+    color: rgb(60, 164, 248);
+}
+
+
+.delivery-option {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+.delivery-option-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.delivery-option-input {
+    margin-left: 0;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.delivery-option-input:focus {
+    outline: none;
+}
+
+.delivery-option-date {
+    color: rgb(0, 118, 0);
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+.delivery-option-price {
+    color: rgb(120, 120, 120);
+    font-size: 15px;
+}
+
+.payment-summary {
+    margin-top: 20px;
+    padding: 18px;
+    height: auto;    
+    border: 1px solid rgba(0, 0, 0, 0.212);
+}
+
+.payment-summary-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.payment-summary-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 9px;
+    font-size: 15px;
+}
+
+.subtotal-row .payment-summary-money  {
+    border-top: 1px solid rgb(222, 222, 222);
+}
+
+.subtotal-row div {
+    padding-top: 9px;
+}
+
+
+.total-row  {
+    border-top: 1px solid rgb(222, 222, 222);
+    color: rgb(177, 39, 4);
+    font-weight: 700;
+    font-size: 18px;
+    border-top: 1px solid rgb(222, 222, 222);
+    padding-top: 18px;
+}
+
+.place-order-button {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 11px;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Desktop  first max-width*/
+@media (max-width: 1000px){
+    .main {
+        max-width: 500px;
+    }
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-details-grid {
+        grid-template-columns: 100px 1fr;
+        row-gap: 25px;
+    }
+    .delivery-options {
+        grid-column: 1 / span 2;
+    }
+
+    .payment-summary {
+        grid-row: 1;
+    }
+    .checkout-item-quantity {
+        font-size: 16px;
+    }
+} 
+
+@media (max-width: 799px){
+    .checkout-item-quantity {
+        font-size: 14px;
+    }
+    .seuhora-logo {
+        display: none;
+    }
+    .seuhora-mobile-logo {
+        display: block;
+        max-width: 60px;
+    }
+}

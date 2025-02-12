@@ -1,0 +1,152 @@
+
+:root {
+    --primary-clo: rgb(182, 129, 14);
+    --primary-clo-hover: rgb(218, 162, 43);
+    --primary-clo-action: rgb(156, 110, 10);
+}
+
+.main-section {
+    margin-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.item-card {
+    padding: 0px 16px 16px 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.055);
+    transition: all 0.3s;
+}
+
+.item-card:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.137);
+}
+
+.item-image {
+    background-size: cover;
+    width: 100%;
+    transition: all 0.3s;
+}
+.item-image:hover {
+    transform: scale(1.05);
+}
+
+.brand-name {
+    font-size: 14px;
+    color: rgba(128, 128, 128, 0.63);
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+.item-name {
+    margin-bottom: 12px;
+    color: rgb(37, 37, 37);
+    font-weight: 500;
+}
+
+.item-price {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.item-is-added-to-cart {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: green;
+    font-size: 18px;
+    
+}
+.added-icon {
+    width: 24px;
+    margin-right: 8px;
+}
+
+.add-to-cart-button {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--primary-clo);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.add-to-cart-button:hover {
+    background-color: var(--primary-clo-hover);
+}
+.add-to-cart-button:active {
+    background-color: var(--primary-clo-action);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (max-width: 599px){
+    .item-image {
+        width: 80;
+    }
+    .main-section {
+        grid-template-columns: 1fr;
+    }
+}
+@media all and (min-width: 600px) and (max-width:799px){
+    .main-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media all and (min-width: 700px) and (max-width: 1024px){
+    .main-section {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media all and (min-width: 1025px) and (max-width: 1399px){
+    .main-section {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+@media all and (min-width: 1400px){
+    .main-section {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
