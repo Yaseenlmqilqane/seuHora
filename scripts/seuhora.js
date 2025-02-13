@@ -1,5 +1,6 @@
 import {products} from '../data/products.js';
-import { addToCart } from '../data/cart.js'
+import {cart} from '../data/cart.js';
+
 
 
 
@@ -22,7 +23,11 @@ products.forEach((product) => {
                 <img src="./images/icons/checkmark.png" alt="" class="added-icon">
                 <p class="added-text">Added</p>
             </div>
-            <button data-product-id="${product.id}" class="add-to-cart-button js-add-to-cart-button">Add to cart</button>
+            <button 
+            data-product-id="${product.id}" 
+            class="add-to-cart-button js-add-to-cart-button">
+                Add to cart
+            </button>
         </div>
     `
     productHTML.innerHTML += html;
@@ -32,10 +37,35 @@ products.forEach((product) => {
 
 document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
     button.addEventListener('click', () => {
+
         const productId = button.dataset.productId;
-        addToCart(productId)
+
+        let matchingProduct;
+
+        // Loop throught the cart 
+        cart.forEach((cartItem) => {
+            // To cheack if product in the cart.
+            if(productId === cartItem.productId) {
+                matchingProduct = cartItem;
+            }
+        });
+
+        // If it is in the cart 
+        if(matchingProduct) {
+            // Increase the quantity.
+            matchingProduct.quantity += 1
+        } else {
+            // If it's not in the cart, add it to the cart.
+            cart.push({
+                productId: productId,
+                quantity: 1,
+            });
+        }
+
+        console.log(cart);
+        
     });
 });
 
 
-
+// console.log();
