@@ -42,6 +42,8 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
 
         let matchingProduct;
 
+        
+
         // Loop throught the cart 
         cart.forEach((cartItem) => {
             // To cheack if product in the cart.
@@ -62,9 +64,20 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
             });
         }
 
-        console.log(cart);
         
+        // calculate the quantity in the cart or total number of products in the cart
+        let cartQuantity = 0;
+
+        // To know quantity of array we need loop throught it this array.
+        cart.forEach((cartitem) => {
+            cartQuantity += cartitem.quantity;
+        });
+
+        // Show quantity in the home page in on the cart icon
+        document.querySelector('.js-count-cart-quntity').innerHTML = cartQuantity;
+
     });
+    
 });
 
 
