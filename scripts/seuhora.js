@@ -5,6 +5,7 @@ import {cart} from '../data/cart.js';
 
 
 
+
 const productHTML = document.querySelector('.js-main-section');
 
 products.forEach((product) => {
@@ -16,7 +17,28 @@ products.forEach((product) => {
             <div class="item-card-info">
                 <p class="brand-name">${product.brand}</p>
                 <h4 class="item-name limit-text-to-2-lines ">${product.name}</h4>
+                <div class="product-rating-container">
+                    <img class="product-rating-stars"
+                        src="../images/ratings/rating-${product.rating.stars * 10}.png">
+                    <div class="product-rating-count link-primary">
+                        ${product.rating.count}
+                    </div>
+                </div>
                 <p class="item-price">${product.getPrice()}</p>
+            </div>
+            <div class="product-quantity-container">
+                <select class="js-quantity-selector-${product.id}">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+            </select>
             </div>
             <div class="limit-text-to-2-lines"></div>
             <div class="item-is-added-to-cart">
@@ -40,6 +62,8 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
 
         const productId = button.dataset.productId;
 
+        const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`).value;
+
         let matchingProduct;
 
         
@@ -60,7 +84,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
             // If it's not in the cart, add it to the cart.
             cart.push({
                 productId: productId,
-                quantity: 1,
+                quantity: Number(quantitySelector),
             });
         }
 
@@ -75,9 +99,12 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
 
         // Show quantity in the home page in on the cart icon
         document.querySelector('.js-count-cart-quntity').innerHTML = cartQuantity;
-
+        
+        
+        console.log(cart);
+        console.log(Number(quantitySelector));
     });
-    
+
 });
 
 

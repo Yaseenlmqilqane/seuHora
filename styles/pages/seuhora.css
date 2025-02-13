@@ -82,6 +82,20 @@
 .add-to-cart-button:active {
     background-color: var(--primary-clo-action);
 }
+.product-quantity-container {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.product-rating-container {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    gap: 8px;
+}
+.product-rating-stars {
+    width: 100px;
+}
 
 
 
