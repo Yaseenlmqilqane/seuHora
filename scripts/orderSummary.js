@@ -1,5 +1,5 @@
 import { cart } from "../data/cart.js";
-import { getProduct } from '../data/products.js'
+import { products } from '../data/products.js'
 
 
 const orderSummary = document.querySelector('.js-order-summary');
@@ -15,20 +15,24 @@ export function renderOrderSummary() {
 
         const productId = cartItem.productId;
 
-        const matchingProduct = getProduct(productId);
+        let matchingProduct;
 
-        console.log(matchingProduct.name);
-
+        products.forEach((product) => {
+            if(product.id === productId) {
+                matchingProduct = product;
+            }
+        });
+        
         orderSummaryHTML += `
             <div class="cart-item-container">
                 <p class="delivery-date">Delivery date: Friday, February 14</p>
                 <div class="cart-details-grid">
-                    <img class="item-img" src="/images/products/Monaco.png" alt="">
+                    <img class="item-img" src="${matchingProduct.image}" alt="">
                     <div class="item-info">
-                        <h3 class="item-name">Name</h3>
-                        <p class="item-price">Price</p>
+                        <h3 class="item-name">${matchingProduct.name}</h3>
+                        <p class="item-price">${matchingProduct.getPrice()}</p>
                         <div class="item-quantity">
-                            <p>Quantity: 1</p>
+                            <p>Quantity: ${cartItem.quantity}</p>
                             <a href="" class="Update-quntity">Update</a>
                             <a href="" class="delete-item">delete</a>
                         </div>
