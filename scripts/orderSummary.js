@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js";
+import { cart, removeFromCart } from "../data/cart.js";
 import { products } from '../data/products.js'
 
 
@@ -33,8 +33,8 @@ export function renderOrderSummary() {
                         <p class="item-price">${matchingProduct.getPrice()}</p>
                         <div class="item-quantity">
                             <p>Quantity: ${cartItem.quantity}</p>
-                            <a href="" class="Update-quntity">Update</a>
-                            <a href="" class="delete-item">delete</a>
+                            <span class="Update-quntity">Update</span>
+                            <span class="delete-item js-delete-item" data-product-id="${matchingProduct.id}">delete</span>
                         </div>
                     </div>
                     <div class="delivery-options">
@@ -71,6 +71,17 @@ export function renderOrderSummary() {
     
 
     orderSummary.innerHTML = orderSummaryHTML;
-    
+
+
+
+    document.querySelectorAll('.js-delete-item').forEach((link) => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            removeFromCart(productId);
+            renderOrderSummary();
+            
+        });
+    });
+
 };
 
