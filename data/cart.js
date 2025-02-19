@@ -11,5 +11,41 @@ export let cart = [
 
 
 
+export function addToCart(productId, quantitySelector) {
+    let matchingProduct;
+
+        // Loop throught the cart 
+        cart.forEach((cartItem) => {
+            // To cheack if product in the cart.
+            if(productId === cartItem.productId) {
+                matchingProduct = cartItem;
+            }
+        });
+
+        // If it is in the cart 
+        if(matchingProduct) {
+            // Increase the quantity.
+            matchingProduct.quantity += 1
+        } else {
+            // If it's not in the cart, add it to the cart.
+            cart.push({
+                productId,
+                quantity: Number(quantitySelector),
+            });
+        }
+};
+
+export function updateCartQuantity() {
+    // calculate the quantity in the cart or total number of products in the cart
+    let cartQuantity = 0;
+
+    // To know quantity of array we need loop throught it this array.
+    cart.forEach((cartitem) => {
+        cartQuantity += cartitem.quantity;
+    });
+
+    // Show quantity in the home page in on the cart icon
+    document.querySelector('.js-count-cart-quntity').innerHTML = cartQuantity;
+};
 
 

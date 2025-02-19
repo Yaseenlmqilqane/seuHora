@@ -1,5 +1,5 @@
 import {products} from '../data/products.js';
-import {cart} from '../data/cart.js';
+import {cart, addToCart, updateCartQuantity} from '../data/cart.js';
 
 
 
@@ -56,75 +56,38 @@ products.forEach((product) => {
 })
 
 
-
 document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
-
-    let addedMessaeTimeoutId;
-
     button.addEventListener('click', () => {
-
         const productId = button.dataset.productId;
-
         const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`).value;
 
-        let matchingProduct;
+        addToCart(productId, quantitySelector);
+        updateCartQuantity();
+        showAddedMessage(productId);
+    });
+});
 
-        
 
-        // Loop throught the cart 
-        cart.forEach((cartItem) => {
-            // To cheack if product in the cart.
-            if(productId === cartItem.productId) {
-                matchingProduct = cartItem;
-            }
-        });
+let addedMessaeTimeoutId;
 
-        // If it is in the cart 
-        if(matchingProduct) {
-            // Increase the quantity.
-            matchingProduct.quantity += 1
-        } else {
-            // If it's not in the cart, add it to the cart.
-            cart.push({
-                productId,
-                quantity: Number(quantitySelector),
-            });
+function showAddedMessage(productId) {
+    const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+    addedMessage.classList.add("added");
+
+    setTimeout(() => {
+        // Check if a previous timeoutId exists. If it does,
+        // we will stop it.
+        if(addedMessaeTimeoutId) {
+            clearTimeout(addedMessaeTimeoutId);
         }
 
-        
-        // calculate the quantity in the cart or total number of products in the cart
-        let cartQuantity = 0;
+        const timeoutId = setTimeout(() => {
+            addedMessage.classList.remove("added");
+        }, 2000);
 
-        // To know quantity of array we need loop throught it this array.
-        cart.forEach((cartitem) => {
-            cartQuantity += cartitem.quantity;
-        });
-
-        // Show quantity in the home page in on the cart icon
-        document.querySelector('.js-count-cart-quntity').innerHTML = cartQuantity;
-
-
-        const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
-        addedMessage.classList.add("added");
-
-
-        setTimeout(() => {
-            // Check if a previous timeoutId exists. If it does,
-            // we will stop it.
-            if(addedMessaeTimeoutId) {
-                clearTimeout(addedMessaeTimeoutId);
-            }
-
-            const timeoutId = setTimeout(() => {
-                addedMessage.classList.remove("added");
-            }, 2000);
-
-            // Save the timeoutId so we can stop it later.
-            addedMessaeTimeoutId = timeoutId;
-        });
-
+        // Save the timeoutId so we can stop it later.
+        addedMessaeTimeoutId = timeoutId;
     });
-
-});
+};
         
 // console.log();
