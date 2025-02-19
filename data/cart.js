@@ -1,38 +1,47 @@
-export let cart = [
-    {
-        productId: '832e92dc-2c74-4bfe-a6e7-b557b2d342e0',
-        quantity: 2,
-    },
-    {
-        productId: '5adaa2cf-cdd2-4703-bd28-ffd7486d487e',
-        quantity: 1,
-    }
-]
 
+export let cart = JSON.parse(localStorage.getItem('cart'));
 
+if(!cart) {
+    cart = [
+        {
+            productId: '832e92dc-2c74-4bfe-a6e7-b557b2d342e0',
+            quantity: 2,
+        },
+        {
+            productId: '5adaa2cf-cdd2-4703-bd28-ffd7486d487e',
+            quantity: 1,
+        }
+    ]
+}
+
+function saveToStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 export function addToCart(productId, quantitySelector) {
     let matchingProduct;
 
-        // Loop throught the cart 
-        cart.forEach((cartItem) => {
-            // To cheack if product in the cart.
-            if(productId === cartItem.productId) {
-                matchingProduct = cartItem;
-            }
-        });
-
-        // If it is in the cart 
-        if(matchingProduct) {
-            // Increase the quantity.
-            matchingProduct.quantity += 1
-        } else {
-            // If it's not in the cart, add it to the cart.
-            cart.push({
-                productId,
-                quantity: Number(quantitySelector),
-            });
+    // Loop throught the cart 
+    cart.forEach((cartItem) => {
+        // To cheack if product in the cart.
+        if(productId === cartItem.productId) {
+            matchingProduct = cartItem;
         }
+    });
+
+    // If it is in the cart 
+    if(matchingProduct) {
+        // Increase the quantity.
+        matchingProduct.quantity += 1
+    } else {
+        // If it's not in the cart, add it to the cart.
+        cart.push({
+            productId,
+            quantity: Number(quantitySelector),
+        });
+    }
+
+    saveToStorage();
 };
 
 export function updateCartQuantity() {
@@ -48,7 +57,7 @@ export function updateCartQuantity() {
     document.querySelector('.js-count-cart-quntity').innerHTML = cartQuantity;
 };
 
-
+// Delete element from array use forEach Loop
 export function removeFromCart(productId) {
     const newCart = [];
 
@@ -59,4 +68,5 @@ export function removeFromCart(productId) {
     });
 
     cart = newCart;
+    saveToStorage();
 }
