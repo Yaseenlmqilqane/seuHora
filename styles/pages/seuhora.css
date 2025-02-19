@@ -62,6 +62,15 @@
     font-size: 18px;
     
 }
+.added {
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: green;
+    font-size: 18px;
+}
 .added-icon {
     width: 24px;
     margin-right: 8px;

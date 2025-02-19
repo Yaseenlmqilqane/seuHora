@@ -41,7 +41,7 @@ products.forEach((product) => {
             </select>
             </div>
             <div class="limit-text-to-2-lines"></div>
-            <div class="item-is-added-to-cart">
+            <div class="item-is-added-to-cart js-added-to-cart-${product.id}">
                 <img src="./images/icons/checkmark.png" alt="" class="added-icon">
                 <p class="added-text">Added</p>
             </div>
@@ -58,6 +58,9 @@ products.forEach((product) => {
 
 
 document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
+
+    let addedMessaeTimeoutId;
+
     button.addEventListener('click', () => {
 
         const productId = button.dataset.productId;
@@ -83,7 +86,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
         } else {
             // If it's not in the cart, add it to the cart.
             cart.push({
-                productId: productId,
+                productId,
                 quantity: Number(quantitySelector),
             });
         }
@@ -99,13 +102,29 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
 
         // Show quantity in the home page in on the cart icon
         document.querySelector('.js-count-cart-quntity').innerHTML = cartQuantity;
-        
-        
-        console.log(cart);
-        console.log(Number(quantitySelector));
+
+
+        const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+        addedMessage.classList.add("added");
+
+
+        setTimeout(() => {
+            // Check if a previous timeoutId exists. If it does,
+            // we will stop it.
+            if(addedMessaeTimeoutId) {
+                clearTimeout(addedMessaeTimeoutId);
+            }
+
+            const timeoutId = setTimeout(() => {
+                addedMessage.classList.remove("added");
+            }, 2000);
+
+            // Save the timeoutId so we can stop it later.
+            addedMessaeTimeoutId = timeoutId;
+        });
+
     });
 
 });
-
-
+        
 // console.log();
