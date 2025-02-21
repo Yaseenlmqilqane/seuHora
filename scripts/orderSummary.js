@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from "../data/cart.js";
+import { cart, removeFromCart, calculateCartQuantity } from "../data/cart.js";
 import { products } from '../data/products.js'
 
 
@@ -82,5 +82,6 @@ export function renderOrderSummary() {
         });
     });
 
+    calculateCartQuantity();
 };
 
