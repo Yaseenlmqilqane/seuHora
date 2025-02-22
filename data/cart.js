@@ -45,8 +45,6 @@ export function addToCart(productId, quantitySelector) {
 };
 
 
-let itemQuantity;
-
 export function updateCartQuantity() {
     // calculate the quantity in the cart or total number of products in the cart
     let cartQuantity = 0;
@@ -55,9 +53,11 @@ export function updateCartQuantity() {
     cart.forEach((cartitem) => {
         cartQuantity += cartitem.quantity;
     });
+
     
     // Show quantity in the home page in on the cart icon
     document.querySelector('.js-count-cart-quntity').innerHTML = cartQuantity;
+    
     saveToStorage();
 };
 
@@ -86,3 +86,21 @@ export function removeFromCart(productId) {
     cart = newCart;
     saveToStorage();
 }
+
+
+export function updateQuantity(productId, newQuantity) {
+    let matchingProduct;
+
+    // Loop throught the cart 
+    cart.forEach((cartItem) => {
+        // To cheack if product in the cart.
+        if(productId === cartItem.productId) {
+            matchingProduct = cartItem;
+        }
+    });
+
+    matchingProduct.quantity = newQuantity;
+    document.querySelector(`.js-cart-product-quantity-${productId}`).innerHTML = newQuantity;
+    saveToStorage();
+}
+

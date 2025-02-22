@@ -1,4 +1,4 @@
-import { cart, removeFromCart, calculateCartQuantity } from "../data/cart.js";
+import { cart, removeFromCart, calculateCartQuantity, updateQuantity} from "../data/cart.js";
 import { products } from '../data/products.js'
 
 
@@ -24,7 +24,7 @@ export function renderOrderSummary() {
         });
         
         orderSummaryHTML += `
-            <div class="cart-item-container">
+            <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
                 <p class="delivery-date">Delivery date: Friday, February 14</p>
                 <div class="cart-details-grid">
                     <img class="item-img" src="${matchingProduct.image}" alt="">
@@ -32,9 +32,11 @@ export function renderOrderSummary() {
                         <h3 class="item-name">${matchingProduct.name}</h3>
                         <p class="item-price">${matchingProduct.getPrice()}</p>
                         <div class="item-quantity">
-                            <p>Quantity: ${cartItem.quantity}</p>
-                            <span class="Update-quntity">Update</span>
-                            <span class="delete-item js-delete-item" data-product-id="${matchingProduct.id}">delete</span>
+                            <p>Quantity: <span class="cart-product-quantity js-cart-product-quantity-${matchingProduct.id}">${cartItem.quantity}</span></p>
+                            <span class="Update-quntity js-Update-quntity" data-product-id="${matchingProduct.id}">Update</span>
+                            <input class="quantity-input js-quantity-input-${matchingProduct.id}">
+                            <span class="save-quantity-link link-primary" data-product-id="${matchingProduct.id}">Save</span>
+                            <span class="delete-item js-delete-item" data-product-id="${matchingProduct.id}">Delete</span>
                         </div>
                     </div>
                     <div class="delivery-options">
@@ -83,5 +85,33 @@ export function renderOrderSummary() {
     });
 
     calculateCartQuantity();
+    
+    document.querySelectorAll('.js-Update-quntity').forEach(link => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            const cartContainer = document.querySelector(`.js-cart-item-container-${productId}`);
+
+            cartContainer.classList.add('is-editing-quantity')
+        });
+    });
+
+    document.querySelectorAll('.save-quantity-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            
+            const cartContainer = document.querySelector(`.js-cart-item-container-${productId}`);
+            cartContainer.classList.remove('is-editing-quantity');
+
+            const inputValue = document.querySelector(`.js-quantity-input-${productId}`).value;
+            const newQuantity = Number(inputValue);
+
+            console.log(newQuantity)
+
+            updateQuantity(productId, newQuantity);
+            renderOrderSummary();
+        });
+        
+    });
+    
 };
 
