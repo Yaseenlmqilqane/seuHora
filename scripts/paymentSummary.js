@@ -1,6 +1,6 @@
 import { cart } from "../data/cart.js";
 import { getProduct } from "../data/products.js";
-import { formatCurrency, formatCurrency2 } from "./utils/money.js";
+import { formatCurrency } from "./utils/money.js";
 import { getDeliveryOption } from '../data/deliveryOptions.js'
 
 export function renderPaymentSummary() {
@@ -32,7 +32,7 @@ export function renderPaymentSummary() {
             <div class="payment-summary-row">
                 <div>Shipping & handling:</div>
                 <div class="payment-summary-price">
-                    $${formatCurrency2(shippingPriceCents)}
+                    ${formatCurrency(shippingPriceCents)}
                 </div>
             </div>
             <div class="payment-summary-row subtotal-row">
@@ -43,11 +43,11 @@ export function renderPaymentSummary() {
             </div>
             <div class="payment-summary-row">
                 <div>Estimated tax (10%):</div>
-                <div class="payment-summary-price">${formatCurrency2(taxCents)}</div>
+                <div class="payment-summary-price">${formatCurrency(taxCents)}</div>
             </div>
             <div class="payment-summary-row total-row">
             <div>Order total:</div>
-            <div class="payment-summary-price">$${formatCurrency2(totalCents)}</div>
+            <div class="payment-summary-price">${formatCurrency(totalCents)}</div>
         </div>
         <button class="place-order-button button-primary">Place your order</button>
     `;

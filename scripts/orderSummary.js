@@ -2,7 +2,7 @@ import { cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeli
 import { products } from '../data/products.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../data/deliveryOptions.js';
-import {formatCurrency2} from '../scripts/utils/money.js'
+import {formatCurrency} from '../scripts/utils/money.js'
 import { renderPaymentSummary } from "./paymentSummary.js";
 
 
@@ -77,7 +77,7 @@ export function renderOrderSummary() {
             const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
             const dateString = deliveryDate.format('dddd, MMMM D');
             
-            const priceString = deliveryOption.priceCents === 0 ? 'Free': `${formatCurrency2(deliveryOption.priceCents)} -`;
+            const priceString = deliveryOption.priceCents === 0 ? 'Free': `${formatCurrency(deliveryOption.priceCents)} -`;
 
             const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 

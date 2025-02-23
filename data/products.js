@@ -46,7 +46,7 @@ export const products = [
         name: 'Yacht Master II',
         brand: 'rolex',
         image: 'images/products/Yacht-Master II.png',
-        priceCents: 15178,
+        priceCents: 1517800,
         rating: {
             stars: 4.5,
             count: 87
@@ -62,7 +62,7 @@ export const products = [
         name: 'Nautilus',
         brand: 'Patek Philippe',
         image: 'images/products/Nautilus.png',
-        priceCents: 13837,
+        priceCents: 1383700,
         rating: {
             stars: 5,
             count: 287
@@ -78,7 +78,7 @@ export const products = [
         name: 'Calatrava',
         brand: 'Patek Philippe',
         image: 'images/products/Calatrava.png',
-        priceCents: 5831,
+        priceCents: 583100,
         rating: {
             stars: 5,
             count: 587
@@ -94,7 +94,7 @@ export const products = [
         name: 'Speedmaster',
         brand: 'omega',
         image: 'images/products/Speedmaster.png',
-        priceCents: 7482,
+        priceCents: 748200,
         rating: {
             stars: 3.5,
             count: 487
@@ -110,7 +110,7 @@ export const products = [
         name: 'Oyster Perpetual',
         brand: 'rolex',
         image: 'images/products/Oyster-Perpetual.png',
-        priceCents: 1598,
+        priceCents: 159800,
         rating: {
             stars: 5,
             count: 6870
@@ -126,7 +126,7 @@ export const products = [
         name: 'Monaco',
         brand: 'TAG Heuer',
         image: 'images/products/Monaco.png',
-        priceCents: 1825,
+        priceCents: 182500,
         rating: {
             stars: 2,
             count: 125
@@ -142,7 +142,7 @@ export const products = [
         name: 'Sea-Dweller',
         brand: 'rolex',
         image: 'images/products/Sea-Dweller.png',
-        priceCents: 7907,
+        priceCents: 790700,
         rating: {
             stars: 4.5,
             count: 187
@@ -158,7 +158,7 @@ export const products = [
         name: 'Seamaster',
         brand: 'omega',
         image: 'images/products/Seamaster.png',
-        priceCents: 308,
+        priceCents: 30800,
         rating: {
             stars: 4.5,
             count: 487
@@ -174,7 +174,7 @@ export const products = [
         name: 'Carrera',
         brand: 'TAG Heuer',
         image: 'images/products/Carrera.png',
-        priceCents: 1758,
+        priceCents: 175800,
         rating: {
             stars: 2.5,
             count: 287
@@ -190,7 +190,7 @@ export const products = [
         name: 'Explorer II',
         brand: 'rolex',
         image: 'images/products/Explorer-II.png',
-        priceCents: 6355,
+        priceCents: 635500,
         rating: {
             stars: 4,
             count: 487
@@ -206,7 +206,7 @@ export const products = [
         name: 'Milgauss',
         brand: 'rolex',
         image: 'images/products/Milgauss.png',
-        priceCents: 7482,
+        priceCents: 748200,
         rating: {
             stars: 4,
             count: 487
