@@ -120,5 +120,4 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
 
     matchingProduct.deliveryOptionId = deliveryOptionId;
     saveToStorage();
-    console.log(matchingProduct)
 };
