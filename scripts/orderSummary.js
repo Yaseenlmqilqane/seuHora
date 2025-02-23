@@ -144,6 +144,7 @@ export function renderOrderSummary() {
 
             updateQuantity(productId, newQuantity);
             renderOrderSummary();
+            renderPaymentSummary();
         });
         
     });
