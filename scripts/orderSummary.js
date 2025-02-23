@@ -1,4 +1,4 @@
-import { cart, removeFromCart, calculateCartQuantity, updateQuantity} from "../data/cart.js";
+import { cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeliveryOption} from "../data/cart.js";
 import { products } from '../data/products.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from '../data/deliveryOptions.js';
@@ -43,7 +43,6 @@ export function renderOrderSummary() {
         const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
         const dateString = deliveryDate.format('dddd, MMMM D');
 
-        console.log(deliveryOption)
         
         orderSummaryHTML += `
             <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
@@ -72,6 +71,8 @@ export function renderOrderSummary() {
         `
     });
 
+    
+
     function deliveryOptionsHTML(matchingProduct, cartItem) {
         
         let html = '';
@@ -87,7 +88,10 @@ export function renderOrderSummary() {
             const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
             html += `
-                <div class="delivery-option">
+                
+                <div class="delivery-option"
+                data-product-id="${matchingProduct.id}"
+                data-delivery-option-id="${deliveryOption.id}">
                     <input 
                         type="radio" 
                         ${isChecked ? 'checked' : '' } 
@@ -99,6 +103,7 @@ export function renderOrderSummary() {
                         <div class="delivery-option-price">${priceString} Shipping</div>
                     </div>
                 </div>
+                
             `
         });
 
@@ -140,13 +145,25 @@ export function renderOrderSummary() {
             const inputValue = document.querySelector(`.js-quantity-input-${productId}`).value;
             const newQuantity = Number(inputValue);
 
-            console.log(newQuantity)
+            
 
             updateQuantity(productId, newQuantity);
             renderOrderSummary();
         });
         
     });
+   
+
+    document.querySelectorAll('.delivery-option').forEach((element) => {
+        element.addEventListener('click', () => {
+            const {productId, deliveryOptionId} = element.dataset;
+            updateDeliveryOption(productId, deliveryOptionId)
+        });
+    });
     
 };
+
+
+
+
 
