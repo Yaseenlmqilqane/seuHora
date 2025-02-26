@@ -61,7 +61,9 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
         const productId = button.dataset.productId;
         const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`).value;
 
-        addToCart(productId, quantitySelector);
+        const quantitySelectorNumber = Number(quantitySelector);
+        
+        addToCart(productId, quantitySelectorNumber);
         updateCartQuantity();
         showAddedMessage(productId);
     });
@@ -91,4 +93,3 @@ function showAddedMessage(productId) {
     });
 };
         
-// console.log();

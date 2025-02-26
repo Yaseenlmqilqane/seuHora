@@ -102,3 +102,54 @@
     align-items: center;
     gap: 8px;
 }
+
+
+
+
+/* Desktop  first max-width*/
+@media (max-width: 1000px){
+    .main {
+        max-width: 500px;
+    }
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-details-grid {
+        grid-template-columns: 100px 1fr;
+        row-gap: 25px;
+    }
+    .delivery-options {
+        grid-column: 1 / span 2;
+    }
+
+    .payment-summary {
+        grid-row: 1;
+    }
+    .checkout-item-quantity {
+        font-size: 16px;
+    }
+} 
+
+@media (max-width: 799px){
+    .checkout-item-quantity {
+        font-size: 14px;
+    }
+    .seuhora-logo {
+        display: none;
+    }
+    .seuhora-mobile-logo {
+        display: block;
+        max-width: 60px;
+    }
+    .sumeet-btn {
+        display: none;
+    }
+    .seuhora-header-right-section {
+        width: auto;
+    }
+    .seuhora-header-left-section {
+        width: auto;
+        margin-right: 50px;
+    }
+}
